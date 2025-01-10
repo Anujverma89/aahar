@@ -56,12 +56,10 @@ const Pantrymanager: React.FC<any> = () => {
     function editPatientDetail(e:any) {
         const pantryid = e.target.id;
         const arrayindex = parseInt(pantryid);
-        for(let x in allPantries[arrayindex]){
-            SetpantryDetail((prev)=>({
-                ...prev,
-                [x]:allPantries[arrayindex][x]
-            }))
-        }
+        const currentPanty = allPantries[arrayindex];
+        // setAllPantries(currentPanty);
+        console.log(currentPanty);
+        console.log(pantryDetail)
         setIsEditPantry(true);
     }
 

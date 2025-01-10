@@ -54,14 +54,10 @@ const Patients: React.FC<any> = () => {
     }
 
     function editPatientDetail(e: any) {
-        const patientid = e.target.id;
-        const arrayindex = parseInt(patientid);
-        for (let x in patientDetail[arrayindex]) {
-            SetPatientsData((prev) => ({
-                ...prev,
-                [x]: patientDetail[arrayindex][x],
-            }))
-        }
+        console.log(e)
+        // const patientid = e.target.id;
+        // const arrayindex = parseInt(patientid);
+        // const patientdetail = patientDetail[arrayindex];
         setIsEditPatientDetail(true);
     }
 
@@ -72,12 +68,8 @@ const Patients: React.FC<any> = () => {
         const patientid = e.target.id;
         const arrayindex:number = parseInt(patientid) || 0;
         const id:string = patientDetail[arrayindex].id;
-        for (let x in patientDetail[arrayindex]) {
-            SetPatientsData((prev) => ({
-                ...prev,
-                [x]: patientDetail[arrayindex][x],
-            }))
-        }
+        // const patiendDetail = patientDetail[arrayindex];
+        // setPatientDetail(patiendDetail);
         axios({
             url:`${base}admin/getdiet/${id}`,
             method:"GET"
