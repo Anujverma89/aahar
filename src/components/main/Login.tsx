@@ -8,7 +8,7 @@ import base from "../../url";
 
 const Login: React.FC<any> = () => {
     const roles: string[] = ["Admin", "Pantry", "Delivery"]
-    const [cookie,setCookie,RemoveCookie] = useCookies(["jwt"]);
+    const [cookie,,RemoveCookie] = useCookies(["jwt"]);
     const navigate = useNavigate();
 
     const inputclass: string = "h-10 bg-transparent border rounded-sm shadow-sm focus:outline-none focus:ring-2 ring-blue-300 px-3 text-black"
@@ -29,6 +29,7 @@ const Login: React.FC<any> = () => {
 
     
     function login(e:React.FormEvent<HTMLFormElement>) {
+        e.preventDefault();
         const user = window.localStorage.getItem("User");
         if(user){
             window.localStorage.removeItem(user);
@@ -36,7 +37,6 @@ const Login: React.FC<any> = () => {
         if(cookie.jwt){
             RemoveCookie("jwt", { path: "/" })
         }
-        e.preventDefault();
         setLoader(true);
         axios({
             url:`${base}auth/login`,
@@ -57,6 +57,7 @@ const Login: React.FC<any> = () => {
             setLoader(false);
         }).catch((e)=>{
             alert("User not found")
+            console.log(e)
             setLoader(false);
         })
     }

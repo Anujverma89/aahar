@@ -3,7 +3,7 @@ import logo from "../../assets/logo.svg"
 import { useCookies } from "react-cookie";
 
 const Footer: React.FC = () => {
-    const [cookie,setCookie, RemoveCookie] = useCookies(['jwt']);
+    const [cookie,, RemoveCookie] = useCookies(['jwt']);
     function logout(){
         RemoveCookie("jwt", { path: "/" })
         window.location.reload();

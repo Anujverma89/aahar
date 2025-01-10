@@ -5,8 +5,8 @@ import base from "../../url";
 
 const Pantry: React.FC<any> = () => {
     const mealtype: string[] = ["Breakfast", "Lunch", "Dinner"];
-    const pantryid:string = window.localStorage.getItem("Uid");
-    const uname:string[] = [window.localStorage.getItem("User")];
+    const pantryid:string = window.localStorage.getItem("Uid") || "";
+    const uname:string[] = [window.localStorage.getItem("User") || " "];
     const [mealDelivery, setMealDelivery] = useState(false);
     const [addPartner, setAddPartner] = useState(false);
     const [viewMeal, setViewMeal] = useState(true);
@@ -67,8 +67,12 @@ const Pantry: React.FC<any> = () => {
         })
     }
 
-    function handleMealChange() {
-
+    function handleMealChange(e: any) {
+        const {name,value} = e.trarget;
+        setMealDetail((prev)=>({
+            ...prev,
+            [name]:value
+        }))
     }
 
 

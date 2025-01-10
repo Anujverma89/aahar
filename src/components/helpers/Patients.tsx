@@ -5,6 +5,9 @@ import { Selectinput } from "./Input";
 import axios from "axios";
 import base from "../../url";
 
+interface Patient {
+    id: string;
+}
 
 const Patients: React.FC<any> = () => {
     const [gender] = useState(["Male", "Female", "Other"]);
@@ -12,7 +15,7 @@ const Patients: React.FC<any> = () => {
     const textareaclass: string = "bg-transparent border rounded-sm shadow-sm focus:outline-none focus:ring-2 ring-blue-300 px-3 text-black"
     const [isViewPatients, setViewPatients] = useState(false);
     const [isPatientSaved, setIsPatientSaved] = useState(false);
-    const [patientDetail, setPatientDetail] = useState([]);
+    const [patientDetail, setPatientDetail] = useState<Patient[]>([]);
     const [isViewClick, setViewClick] = useState(false);
     const [isEditPatientDetail, setIsEditPatientDetail] = useState(false);
     const [dietdata, setDietData] = useState({
@@ -67,7 +70,7 @@ const Patients: React.FC<any> = () => {
 
     function viewPatentDetail(e: any) {
         const patientid = e.target.id;
-        const arrayindex = parseInt(patientid);
+        const arrayindex:number = parseInt(patientid) || 0;
         const id:string = patientDetail[arrayindex].id;
         for (let x in patientDetail[arrayindex]) {
             SetPatientsData((prev) => ({
@@ -204,7 +207,7 @@ const Patients: React.FC<any> = () => {
                     <div className="w-[80%] text-black font-bold flex flex-col justify-center items-center  mb-2 mt-0 md:mt-20 gap-2 static">
                         {
                             patientDetail.map((data: any, index: number) =>
-                                <PatientCard name={data.pname} roomno={data.room} key={data.length} id={index.toString()} edit={editPatientDetail} view={viewPatentDetail} deletepatient={deletePatient} />
+                                <PatientCard name={data.pname} roomno={data.room} key={index} id={index.toString()} edit={editPatientDetail} view={viewPatentDetail} deletepatient={deletePatient} />
                             )
                         }
 

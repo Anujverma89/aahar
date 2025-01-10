@@ -4,6 +4,18 @@ import PatientCard from "./PatientCard";
 import axios from "axios";
 import base from "../../url";
 
+interface Pantry {
+    contact: string,
+    email: string,
+    id: string,
+    location: string,
+    password: string,
+    staffname:string,
+    timecreated:string,
+
+}
+
+
 const Pantrymanager: React.FC<any> = () => {
     const [isViewPatients, setViewPatients] = useState(false);
     const [ispasswordMatch, setPasswordMatch] = useState(true);
@@ -17,7 +29,7 @@ const Pantrymanager: React.FC<any> = () => {
         "cpassword": ""
     })
     const [iseditPantry, setIsEditPantry] = useState(false);
-    const [allPantries, setAllPantries] = useState([]);
+    const [allPantries, setAllPantries] = useState<Pantry[]>([]);;
 
 
     function handleChange(e: any) {
@@ -58,7 +70,7 @@ const Pantrymanager: React.FC<any> = () => {
     }
 
     function deletePatient(e: any) {
-        const id = e.target.id;
+        const id:string = e.target.id;
         const dataid = allPantries[parseInt(id)].id;
         console.log(dataid);
         const conf = confirm("Do you really want to delte ?")

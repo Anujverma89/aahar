@@ -4,7 +4,7 @@ import { Navigate, useLocation } from "react-router-dom";
 
 const Protected: React.FC<{ element: JSX.Element }> = ({ element }) => {
     const location = useLocation();
-    const [cookies,setCookie,RemoveCookie] = useCookies(["jwt"]);
+    const [cookies,,RemoveCookie] = useCookies(["jwt"]);
     
 
     if (!cookies.jwt) {
