@@ -26,7 +26,7 @@ const Footer: React.FC = () => {
                     <Link to="admin">Admin</Link>
                     <Link to="delivery">Vaahak</Link>
                     <Link to="pantry">Pantry</Link>
-                    <Link to="adminonetwothreefour">-------</Link>
+                    <Link to="adminonetwothreefour">-</Link>
                 </div>
             </div>
         </>
