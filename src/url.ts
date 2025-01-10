@@ -1,3 +1,3 @@
-const base:string = "http://localhost:5000/";
+const base:string = "https://aaharbackend.onrender.com";
 
 export default base;
