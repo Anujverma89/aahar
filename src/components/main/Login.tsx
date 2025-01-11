@@ -35,7 +35,7 @@ const Login: React.FC<any> = () => {
             window.localStorage.removeItem(user);
         }
         if(cookie.jwt){
-            RemoveCookie("jwt", { path: "/" })
+            RemoveCookie("jwt")
         }
         setLoader(true);
         axios({
@@ -54,7 +54,7 @@ const Login: React.FC<any> = () => {
             }else if(res.data.role === "Pantry"){
                 navigate("/pantry");
             }
-            setLoader(false);
+            setLoader(false)
         }).catch((e)=>{
             alert("User not found")
             console.log(e)
