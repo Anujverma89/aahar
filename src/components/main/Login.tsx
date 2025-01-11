@@ -42,7 +42,6 @@ const Login: React.FC<any> = () => {
             url:`${base}auth/login`,
             method:"POST",
             data:loginvalue,
-            withCredentials: true
         }).then((res)=>{
             window.localStorage.setItem("User",res.data.role)
             window.localStorage.setItem("Uid",res.data.user[0].id);
